@@ -1,0 +1,20 @@
+###
+TODO
+###
+
+- program takes a file as a command line input
+
+- program needs to read file where 1st col = name, 2nd col = arrival time (s),
+and 3rd col = total processing time
+
+- TASK1: implement first-come-first-served scheduling
+
+- TASK2: implement round robin scheduling
+
+- TASK3: implement shortest time remaining time scheduling
+
+- TASK4: discuss based on results presented by each scheduling algorithm
+discuss what you may observe on the overall system performance
+    Which process gives a shortest waiting time
+    Which process gives a shortest turnaround time on average
+    which has the best system throughput
