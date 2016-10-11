@@ -18,3 +18,10 @@ discuss what you may observe on the overall system performance
     Which process gives a shortest waiting time
     Which process gives a shortest turnaround time on average
     which has the best system throughput
+
+
+- Add testing? 
+
+- Add catches for if a file doesnt exist or doesnt conform to the given data format
+
+- checks for whitespace between characters
