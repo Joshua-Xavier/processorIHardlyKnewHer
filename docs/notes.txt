@@ -1,0 +1,24 @@
+Turnaround Time - Interval of time between submission of process and completion
+Will be equal to process finish time - arrival time
+
+Waiting Time
+
+Average Turnaround Time
+
+Average Waiting Time
+
+Overall throughput of system -
+
+
+Process Object
+    process_id: name of process
+    process_arr: process arrival time
+    process_length: length of time needed to execute process
+
+Sys Vals:
+
+    number_of_processes = processArray.length()
+
+    - use queue
+    current_time: 0..n
+    current_process: index of process array

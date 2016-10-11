@@ -1,5 +1,3 @@
 # !/bin/sh
 
-echo 'Compiling c program...'
-# compile step goes here gcc -o outputName inputName.c
-echo 'C programs compiled!'
+python3 main.py --input-file="input/processes.txt"
