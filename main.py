@@ -7,6 +7,7 @@ DESCRIPTION:
 '''
 
 import argparse
+
 from src.fileRead import getData
 
 
@@ -16,6 +17,9 @@ def main():
     args = parser.parse_args()
 
     processArray = getData(args.input_file)
+    print(processArray)
+
+    processArray.sort(key=lambda x:x[1]) #sorts by arrival time
     print(processArray)
 
 if __name__ == '__main__':

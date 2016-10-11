@@ -9,14 +9,21 @@ elements where:
     index[0] = process name
     index[1] = process arival time
     index[2] = process duration
+    index[3] = turnaround time (defaults to -1)
+    index[4] = waiting time (defaults to -1)
+
+Or explained differently:
+[name, arrival_time, duration, turnaround_time, waiting_time]
 '''
 
 def getData(filePath):
     f = open(filePath, 'r')
     processArray = []
     for line in f:
-        currentItem = line.split()
-        processArray.append(currentItem)
+        processArrayItem = line.split()
+        processArrayItem.append("-1")
+        processArrayItem.append("-1")
+        processArray.append(processArrayItem)
     f.close()
     return processArray
 
