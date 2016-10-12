@@ -11,9 +11,10 @@ elements where:
     index[2] = process duration
     index[3] = turnaround time (defaults to -1)
     index[4] = waiting time (defaults to -1)
+    index[5] = time spent executing (defaults to 0)
 
 Or explained differently:
-[name, arrival_time, duration, turnaround_time, waiting_time]
+[name, arrival_time, duration, turnaround_time, waiting_time, time_spent]
 '''
 
 def getData(filePath):
@@ -23,6 +24,7 @@ def getData(filePath):
         processArrayItem = line.split()
         processArrayItem.append("-1")
         processArrayItem.append("-1")
+        processArrayItem.append("0")
         processArray.append(processArrayItem)
     f.close()
     return processArray
