@@ -31,6 +31,14 @@ class Process:
         return self.timeSpentExecuting
 
     ## --SETTERS--
+    def setID(self, newID):
+        self.id = newID
+
+    def setArrivalTime(self, newArrivalTime):
+        self.arrivalTime = newArrivalTime
+
+    def setDuration(self, newDuration):
+        self.duration = newDuration
 
     def setTimeSpentExecuting(self, time_increment):
         self.timeSpentExecuting += time_increment
@@ -48,3 +56,6 @@ class Process:
     def calculateWaitingTime(self, clock):
         assert(self.isFinished())
         self.waitingTime = clock - self.arrivalTime - self.duration
+
+    def stringify(self):
+        return [self.id, self.arrivalTime, self.duration, self.turnAroundTime, self.waitingTime, self.timeSpentExecuting]

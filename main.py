@@ -17,10 +17,13 @@ def main():
     args = parser.parse_args()
 
     processArray = getData(args.input_file)
-    print(processArray)
+    for process in processArray:
+        print(process.stringify())
 
-    processArray.sort(key=lambda x:x[1]) #sorts by arrival time
-    print(processArray)
+    processArray.sort(key=lambda x:x.getArrivalTime()) #sorts by arrival time
+    for process in processArray:
+        print(process.stringify())
+
 
 if __name__ == '__main__':
     main()

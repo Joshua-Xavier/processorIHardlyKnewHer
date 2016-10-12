@@ -17,16 +17,22 @@ Or explained differently:
 [name, arrival_time, duration, turnaround_time, waiting_time, time_spent]
 '''
 
+from src.Process import Process
+
 def getData(filePath):
     f = open(filePath, 'r')
     processArray = []
     for line in f:
-        processArrayItem = line.split()
-        processArrayItem.append("-1")
-        processArrayItem.append("-1")
-        processArrayItem.append("0")
-        processArray.append(processArrayItem)
+        processItemArray = line.split()
+
+        current_process = Process()
+        current_process.setID(processItemArray[0])
+        current_process.setArrivalTime(int(processItemArray[1]))
+        current_process.setDuration(int(processItemArray[2]))
+
+        processArray.append(current_process)
     f.close()
+
     return processArray
 
 
