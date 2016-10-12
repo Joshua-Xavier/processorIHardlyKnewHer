@@ -9,6 +9,7 @@ DESCRIPTION:
 import argparse
 
 from src.fileRead import getData
+from src.FCFSS import firstComeFirstServeScheduling
 
 
 def main():
@@ -19,10 +20,11 @@ def main():
     processArray = getData(args.input_file)
     for process in processArray:
         print(process.stringify())
-
-    processArray.sort(key=lambda x:x.getArrivalTime()) #sorts by arrival time
-    for process in processArray:
+    print("-----------------")
+    FCFSSarray = firstComeFirstServeScheduling(processArray)
+    for process in FCFSSarray:
         print(process.stringify())
+
 
 
 if __name__ == '__main__':
