@@ -9,9 +9,14 @@ def firstComeFirstServeScheduling(processFeed):
     for process in processFeed:
         processQ.put(process) #add the processes to the Q
 
-
+    finishedArray = []
     while not processQ.empty():
         current_process = processQ.get()
-        clock += current_process[2] #add process time to clock
-        current_process[5] = current_process[2] #time spent executing is clock time
-        current_process[]
+        clock += current_process.getDuration() #add process time to clock
+        current_process.setTimeSpentExecuting(current_process.getDuration())
+        current_process.calculateTurnAroundTime(clock)
+        current_process.calculateWaitingTime(clock)
+
+        finishedArray.append(current_process)
+
+    return finishedArray
