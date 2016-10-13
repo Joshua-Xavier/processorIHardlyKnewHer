@@ -10,6 +10,7 @@ import argparse
 
 from src.fileRead import getData
 from src.FCFSS import firstComeFirstServeScheduling
+from src.RRS import roundRobinScheduling
 
 
 def main():
@@ -26,6 +27,15 @@ def main():
     print("------FCFSS Output--------")
     FCFSSarray = firstComeFirstServeScheduling(processArray)
     for process in FCFSSarray:
+        print(process.stringify())
+
+    print("------Original Input--------")
+    for process in processArray:
+        print(process.stringify())
+        
+    print("------RRS Output--------")
+    RRSarray = roundRobinScheduling(processArray)
+    for process in RRSarray:
         print(process.stringify())
 
 

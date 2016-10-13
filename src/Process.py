@@ -40,14 +40,18 @@ class Process:
     def setDuration(self, newDuration):
         self.duration = newDuration
 
-    def setTimeSpentExecuting(self, time_increment):
+    def incrementTimeSpentExecuting(self, time_increment):
         self.timeSpentExecuting += time_increment
 
     ## --METHODS--
     def isFinished(self):
         #process will only be complete when the time spent executing
         # is equal to the duration of time the process needs
-        return self.timeSpentExecuting == self.duration
+        if self.timeSpentExecuting >= self.duration:
+            self.timeSpentExecuting = self.duration
+            return True
+        else:
+            return False
 
     def calculateTurnAroundTime(self, clock):
         assert(self.isFinished())

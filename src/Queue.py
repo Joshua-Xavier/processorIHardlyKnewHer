@@ -17,3 +17,8 @@ class Queue:
     def add(self, item):
         self.queue.insert(0, item) #inserts item at the start of the queue
         self.qLength += 1
+
+    def peek(self):
+        # returns a shallow copy of the next item in queue to be serviced
+        
+        return self.queue[-1].getArrivalTime()
