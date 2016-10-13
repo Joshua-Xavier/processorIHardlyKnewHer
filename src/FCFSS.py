@@ -12,7 +12,7 @@ def firstComeFirstServeScheduling(processFeed):
 
     finishedArray = []
     while not processQ.isEmpty():
-        print("val")
+
         current_process = processQ.serve()
         clock += current_process.getDuration() #add process time to clock
         current_process.setTimeSpentExecuting(current_process.getDuration())

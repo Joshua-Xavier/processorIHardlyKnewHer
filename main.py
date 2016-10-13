@@ -18,9 +18,12 @@ def main():
     args = parser.parse_args()
 
     processArray = getData(args.input_file)
+
+    print("------Original Input--------")
     for process in processArray:
         print(process.stringify())
-    print("-----------------")
+
+    print("------FCFSS Output--------")
     FCFSSarray = firstComeFirstServeScheduling(processArray)
     for process in FCFSSarray:
         print(process.stringify())
