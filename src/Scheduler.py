@@ -1,3 +1,11 @@
+'''
+AUTHOR: Joshua Nelsson-Smith
+STUDENT ID: 25954113
+START DATE: 14/10/16
+LAST MODIFIED: 14/10/16
+DESCRIPTION:
+'''
+
 from src.Queue import Queue
 import copy
 
@@ -14,6 +22,7 @@ class Scheduler:
         self.clock = -1
         self.currentProcess = None
         self.finishedArray = []
+        self.count = 0 #used for prememption if needed
 
     def isFinished(self):
         return self.arrivalQueue.isEmpty() and self.waitingQueue.isEmpty() and self.currentProcess is None

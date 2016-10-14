@@ -69,7 +69,7 @@ class Process:
     def calculateWaitingTime(self, clock):
         assert(self.isFinished())
         assert(self.turnAroundTime != -1)
-        self.waitingTime = clock - self.turnAroundTime
+        self.waitingTime = self.turnAroundTime - self.duration
 
     def stringify(self):
         return [self.id, self.arrivalTime, self.duration, self.turnAroundTime, self.waitingTime, self.timeSpentExecuting]

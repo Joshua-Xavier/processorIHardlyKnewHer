@@ -1,3 +1,11 @@
+'''
+AUTHOR: Joshua Nelsson-Smith
+STUDENT ID: 25954113
+START DATE: 11/10/16
+LAST MODIFIED: 14/10/16
+DESCRIPTION:
+'''
+
 from src.Queue import Queue
 from src.Scheduler import Scheduler
 import copy
