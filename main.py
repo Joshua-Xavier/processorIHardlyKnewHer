@@ -9,8 +9,7 @@ DESCRIPTION:
 import argparse
 
 from src.fileRead import getData
-from src.Task1 import firstComeFirstServeScheduling
-from src.Task1v2 import firstComeFirstServeScheduler
+from src.Task1 import firstComeFirstServeScheduler
 from src.Task2 import roundRobinScheduling
 from src.Task3 import shortestRemainingTimeScheduling
 from src.testing import test
@@ -29,16 +28,11 @@ def main():
         print(process.stringify())
 
     print("------FCFSS Output--------")
-    FCFSSarray = firstComeFirstServeScheduling(processArray)
-    for process in FCFSSarray:
-        print(process.stringify())
+    FCFSscheduler = firstComeFirstServeScheduler(processArray)
+    while (not FCFSscheduler.isFinished()):
+        FCFSscheduler.tick()
 
-    print("------tester--------")
-    new = firstComeFirstServeScheduler(processArray)
-    while (not new.isFinished()):
-        new.tick()
-
-    for process in new.finishedArray:
+    for process in FCFSscheduler.finishedArray:
         print(process.stringify())
 
     print("------Original Input--------")
