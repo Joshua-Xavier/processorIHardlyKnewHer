@@ -1,4 +1,10 @@
-
+'''
+AUTHOR: Joshua Nelsson-Smith
+STUDENT ID: 25954113
+START DATE: 11/10/16
+LAST MODIFIED: 11/10/16
+DESCRIPTION:
+'''
 
 class Process:
 
@@ -30,6 +36,9 @@ class Process:
     def getTimeSpentExecuting(self):
         return self.timeSpentExecuting
 
+    def getRemainingTime(self):
+        return self.duration - self.timeSpentExecuting
+
     ## --SETTERS--
     def setID(self, newID):
         self.id = newID
@@ -59,7 +68,8 @@ class Process:
 
     def calculateWaitingTime(self, clock):
         assert(self.isFinished())
-        self.waitingTime = clock - self.arrivalTime - self.duration
+        assert(self.turnAroundTime != -1)
+        self.waitingTime = clock - self.turnAroundTime
 
     def stringify(self):
         return [self.id, self.arrivalTime, self.duration, self.turnAroundTime, self.waitingTime, self.timeSpentExecuting]

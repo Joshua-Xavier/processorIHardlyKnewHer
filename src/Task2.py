@@ -1,10 +1,19 @@
+'''
+AUTHOR: Joshua Nelsson-Smith
+STUDENT ID: 25954113
+START DATE: 11/10/16
+LAST MODIFIED: 11/10/16
+DESCRIPTION:
+'''
+
 from src.Queue import Queue
+import copy
 
 def roundRobinScheduling(inputFeed):
     # Implements first come first serve type scheduling
 
     processFeed = copy.deepcopy(inputFeed)
-    
+
     processFeed.sort(key=lambda x:x.getArrivalTime()) #sorts by arrival time
     clock = 0 #system clock starts at 0
 
@@ -15,7 +24,8 @@ def roundRobinScheduling(inputFeed):
     finishedArray = []
     while not processQ.isEmpty():
 
-        nextProcessTime = processQ.peek()
+        nextProcess = processQ.peek()
+        nextProcessTime = nextProcess.getArrivalTime()
 
         while (clock < nextProcessTime):
             # Don't work with a process until the clock has reached it's arrival time

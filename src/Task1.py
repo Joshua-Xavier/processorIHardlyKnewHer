@@ -1,3 +1,11 @@
+'''
+AUTHOR: Joshua Nelsson-Smith
+STUDENT ID: 25954113
+START DATE: 11/10/16
+LAST MODIFIED: 11/10/16
+DESCRIPTION:
+'''
+
 from src.Queue import Queue
 import copy
 
@@ -16,7 +24,8 @@ def firstComeFirstServeScheduling(inputFeed):
     finishedArray = []
     while not processQ.isEmpty():
 
-        nextProcessTime = processQ.peek()
+        nextProcess = processQ.peek()
+        nextProcessTime = nextProcess.getArrivalTime()
         while (clock < nextProcessTime):
             # Don't work with a process until the clock has reached it's arrival time
             clock += 1
