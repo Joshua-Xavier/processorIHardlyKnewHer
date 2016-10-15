@@ -2,7 +2,7 @@
 AUTHOR: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 11/10/16
-LAST MODIFIED: 11/10/16
+LAST MODIFIED: 15/10/16
 DESCRIPTION: This file handles the parsing of a processes.txt file found in an
 input directory. It scans through the text file and returns an array of process
 elements where:
@@ -20,11 +20,20 @@ Or explained differently:
 from src.Process import Process
 
 def getData(filePath):
+    '''
+    Given a filepath getData opens that file, then parses through the lines
+    one by one splitting the values into an array, then assigning them
+    to a new process object. These process objects are added to an array
+    and returned at the end.
+    '''
+
     f = open(filePath, 'r')
     processArray = []
     for line in f:
         processItemArray = line.split()
 
+        # There is a strong dependency here that the data be well formed as:
+        #  Process ID  |  Arrival Time  | Duration
         current_process = Process()
         current_process.setID(processItemArray[0])
         current_process.setArrivalTime(int(processItemArray[1]))
@@ -34,10 +43,3 @@ def getData(filePath):
     f.close()
 
     return processArray
-
-
-'''
-testArray = getData()
-for item in testArray:
-    print(item)
-'''

@@ -2,8 +2,10 @@
 AUTHOR: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 11/10/16
-LAST MODIFIED: 14/10/16
-DESCRIPTION:
+LAST MODIFIED: 15/10/16
+DESCRIPTION: This is the main entry point for the program, it collects the input
+data from the input file given by the command line argument, then feeds the
+data into the 3 different scheduling algorithms to see how they perform differently
 '''
 
 import argparse
