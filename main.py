@@ -11,7 +11,7 @@ import argparse
 from src.fileRead import getData
 from src.Task1 import firstComeFirstServeScheduler
 from src.Task2 import roundRobinScheduler
-from src.Task3 import shortestRemainingTimeScheduling
+from src.Task3 import shortestRemainingTimeScheduler
 from src.testing import test
 
 def main():
@@ -20,8 +20,7 @@ def main():
     args = parser.parse_args()
 
     processArray = getData(args.input_file)
-    print("--TESTING----")
-    test()
+
 
     print("------Original Input--------")
     for process in processArray:
@@ -35,24 +34,35 @@ def main():
     for process in FCFSscheduler.finishedArray:
         print(process.stringify())
 
-    print("------Original Input--------")
-    for process in processArray:
-        print(process.stringify())
+    print("AVERAGE TURNAROUND TIME: " + str(FCFSscheduler.getAvgTurnaroundTime()))
+    print("AVERAGE WAITING TIME: " + str(FCFSscheduler.getAvgWaitingTime()))
+    print("THROUGHPUT: " + str(FCFSscheduler.getThroughput()))
 
-    print("------Other version Output--------")
+    print("------RRS Output--------")
     RRscheduler = roundRobinScheduler(processArray)
     while (not RRscheduler.isFinished()):
         RRscheduler.tick()
 
     for process in RRscheduler.finishedArray:
         print(process.stringify())
-'''
+
+    print("AVERAGE TURNAROUND TIME: " + str(RRscheduler.getAvgTurnaroundTime()))
+    print("AVERAGE WAITING TIME: " + str(RRscheduler.getAvgWaitingTime()))
+    print("THROUGHPUT: " + str(RRscheduler.getThroughput()))
+
     print("------SRTS Output--------")
-    SRTSarray = shortestRemainingTimeScheduling(processArray)
-    for process in SRTSarray:
+    SRTscheduler = shortestRemainingTimeScheduler(processArray)
+    while (not SRTscheduler.isFinished()):
+        SRTscheduler.tick()
+
+    for process in SRTscheduler.finishedArray:
         print(process.stringify())
 
-'''
+    print("AVERAGE TURNAROUND TIME: " + str(SRTscheduler.getAvgTurnaroundTime()))
+    print("AVERAGE WAITING TIME: " + str(SRTscheduler.getAvgWaitingTime()))
+    print("THROUGHPUT: " + str(SRTscheduler.getThroughput()))
+
+
 
 
 if __name__ == '__main__':

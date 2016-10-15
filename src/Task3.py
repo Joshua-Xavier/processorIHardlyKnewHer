@@ -1,51 +1,49 @@
 '''
 AUTHOR: Joshua Nelsson-Smith
 STUDENT ID: 25954113
-START DATE: 13/10/16
+START DATE: 11/10/16
 LAST MODIFIED: 14/10/16
 DESCRIPTION:
 '''
 
 from src.Queue import Queue
+from src.Scheduler import Scheduler
 import copy
 
-def shortestRemainingTimeScheduling(inputFeed):
+class shortestRemainingTimeScheduler(Scheduler):
 
-    processFeed = copy.deepcopy(inputFeed)
+    def tick(self):
+        self.clock += 1
+        remArray = []
 
-    processFeed.sort(key=lambda x:x.getArrivalTime()) #sorts by arrival time
-    clock = 0 #system clock starts at 0
+        for i in range(self.arrivalQueue.getLength()):
+            process = self.arrivalQueue.queue[i]
+            if process.getArrivalTime() == self.clock:
+                self.waitingQueue.add(process)
+                remArray.append(i)
+                self.waitingQueue.remainingTimeSort()
 
-    processQ = Queue()
-    for process in processFeed:
-        processQ.add(process) #add the processes to the Q
+                if (self.currentProcess is not None):
+                    if (self.waitingQueue.peek().getRemainingTime() < self.currentProcess.getRemainingTime()):
+                        self.waitingQueue.add(self.currentProcess)
+                        self.currentProcess = self.waitingQueue.serve()
+                        self.waitingQueue.remainingTimeSort()
 
-    finishedArray = []
+        for index in remArray:
+            self.arrivalQueue.remove(index)
 
-    while not processQ.isEmpty():
-        nextProcess = processQ.peek()
-        nextProcessTime = nextProcess.getArrivalTime()
-        print(processQ.queue)
-        while (clock < nextProcessTime):
-            # Don't work with a process until the clock has reached it's arrival time
-            clock += 1
 
-        current_process = processQ.serve()
-        print(processQ.queue)
-        nextProcess = processQ.peek()
-        nextProcessTime = nextProcess.getArrivalTime()
-        print(processQ.queue)
+        if not self.waitingQueue.isEmpty(): #this is issue
+            if (self.currentProcess is None):
+                self.currentProcess = self.waitingQueue.serve()
 
-        while (not current_process.isFinished()):
-            clock += 1
-            current_process.incrementTimeSpentExecuting(1)
+        if self.currentProcess is not None:
+            if (self.clock > self.currentProcess.getArrivalTime()):
+                self.currentProcess.incrementTimeSpentExecuting(1)
 
-            if (current_process.isFinished()):
-                current_process.calculateTurnAroundTime(clock)
-                current_process.calculateWaitingTime(clock)
-                finishedArray.append(current_process)
-            elif (clock == nextProcessTime):
-                if (nextProcess.getRemainingTime() < current_process.getRemainingTime()):
-                    processQ.add(current_process) #add current process back because other process has shorter duration
 
-        return finishedArray
+            if (self.currentProcess.isFinished()):
+                self.currentProcess.calculateTurnAroundTime(self.clock)
+                self.currentProcess.calculateWaitingTime(self.clock)
+                self.finishedArray.append(self.currentProcess)
+                self.currentProcess = None

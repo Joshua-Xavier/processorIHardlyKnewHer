@@ -36,3 +36,7 @@ class Queue:
     def remove(self, index):
         del self.queue[index]
         self.qLength -= 1
+
+    def remainingTimeSort(self):
+        #sorts queue by remaining time
+        self.queue.sort(key=lambda x:x.getRemainingTime())

@@ -13,6 +13,7 @@ class Scheduler:
 
     def __init__(self, inputFeed):
         processFeed = copy.deepcopy(inputFeed)
+        processFeed.sort(key=lambda x:x.getArrivalTime())
         processQ = Queue()
         for process in processFeed:
             processQ.add(process)
