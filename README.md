@@ -50,4 +50,14 @@ Also if you would prefer to direct your output you can use something like
 $ ./compileScript.sh > output/your_output_filename.txt
 ```
 
+## The program
+You will see after running the program it will output quite a lot of text.
+It runs your input process file through 3 different scheduling algorithms.
+First come first serve scheduling, wherein the processes are serviced according
+to the order in which they arrive. Round robin scheduling, where processes go
+into a queue after they arrive and get a set time slice each before going to
+the back of the queue (in this implementation the time slice is set to 2).
+And finally shortest remaining time scheduling where the process with the
+shortest remaining time is scheduled to execute at any time. 
+
 `src`
