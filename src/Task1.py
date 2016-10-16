@@ -57,6 +57,7 @@ class firstComeFirstServeScheduler(Scheduler):
         if self.currentProcess is not None:
             if (self.clock > self.currentProcess.getArrivalTime()):
                 self.currentProcess.incrementTimeSpentExecuting(1)
+                print("Time " + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
 
             if (self.currentProcess.isFinished()):
                 self.currentProcess.calculateTurnAroundTime(self.clock)
