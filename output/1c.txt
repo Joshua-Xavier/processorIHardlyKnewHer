@@ -1,0 +1,282 @@
+------Original Input--------
+['P1', 0, 3, -1, -1, 0]
+['P2', 1, 6, -1, -1, 0]
+['P3', 4, 4, -1, -1, 0]
+['P4', 6, 2, -1, -1, 0]
+['P5', 8, 14, -1, -1, 0]
+['P6', 10, 2, -1, -1, 0]
+['P7', 18, 3, -1, -1, 0]
+['P8', 7, 2, -1, -1, 0]
+['P9', 8, 3, -1, -1, 0]
+['P10', 15, 6, -1, -1, 0]
+['P11', 4, 4, -1, -1, 0]
+['P12', 6, 2, -1, -1, 0]
+['P13', 0, 3, -1, -1, 0]
+['P14', 1, 6, -1, -1, 0]
+['P15', 4, 4, -1, -1, 0]
+['P16', 6, 2, -1, -1, 0]
+
+------FCFSS Output--------
+Time 1: P1 exec 1/3
+Time 2: P1 exec 2/3
+Time 3: P1 exec 3/3
+Time 4: P13 exec 1/3
+Time 5: P13 exec 2/3
+Time 6: P13 exec 3/3
+Time 7: P2 exec 1/6
+Time 8: P2 exec 2/6
+Time 9: P2 exec 3/6
+Time 10: P2 exec 4/6
+Time 11: P2 exec 5/6
+Time 12: P2 exec 6/6
+Time 13: P14 exec 1/6
+Time 14: P14 exec 2/6
+Time 15: P14 exec 3/6
+Time 16: P14 exec 4/6
+Time 17: P14 exec 5/6
+Time 18: P14 exec 6/6
+Time 19: P3 exec 1/4
+Time 20: P3 exec 2/4
+Time 21: P3 exec 3/4
+Time 22: P3 exec 4/4
+Time 23: P11 exec 1/4
+Time 24: P11 exec 2/4
+Time 25: P11 exec 3/4
+Time 26: P11 exec 4/4
+Time 27: P15 exec 1/4
+Time 28: P15 exec 2/4
+Time 29: P15 exec 3/4
+Time 30: P15 exec 4/4
+Time 31: P4 exec 1/2
+Time 32: P4 exec 2/2
+Time 33: P12 exec 1/2
+Time 34: P12 exec 2/2
+Time 35: P16 exec 1/2
+Time 36: P16 exec 2/2
+Time 37: P8 exec 1/2
+Time 38: P8 exec 2/2
+Time 39: P5 exec 1/14
+Time 40: P5 exec 2/14
+Time 41: P5 exec 3/14
+Time 42: P5 exec 4/14
+Time 43: P5 exec 5/14
+Time 44: P5 exec 6/14
+Time 45: P5 exec 7/14
+Time 46: P5 exec 8/14
+Time 47: P5 exec 9/14
+Time 48: P5 exec 10/14
+Time 49: P5 exec 11/14
+Time 50: P5 exec 12/14
+Time 51: P5 exec 13/14
+Time 52: P5 exec 14/14
+Time 53: P9 exec 1/3
+Time 54: P9 exec 2/3
+Time 55: P9 exec 3/3
+Time 56: P6 exec 1/2
+Time 57: P6 exec 2/2
+Time 58: P10 exec 1/6
+Time 59: P10 exec 2/6
+Time 60: P10 exec 3/6
+Time 61: P10 exec 4/6
+Time 62: P10 exec 5/6
+Time 63: P10 exec 6/6
+Time 64: P7 exec 1/3
+Time 65: P7 exec 2/3
+Time 66: P7 exec 3/3
+Process: P1 Turnaround Time: 3 Waiting Time: 0
+Process: P13 Turnaround Time: 6 Waiting Time: 3
+Process: P2 Turnaround Time: 11 Waiting Time: 5
+Process: P14 Turnaround Time: 17 Waiting Time: 11
+Process: P3 Turnaround Time: 18 Waiting Time: 14
+Process: P11 Turnaround Time: 22 Waiting Time: 18
+Process: P15 Turnaround Time: 26 Waiting Time: 22
+Process: P4 Turnaround Time: 26 Waiting Time: 24
+Process: P12 Turnaround Time: 28 Waiting Time: 26
+Process: P16 Turnaround Time: 30 Waiting Time: 28
+Process: P8 Turnaround Time: 31 Waiting Time: 29
+Process: P5 Turnaround Time: 44 Waiting Time: 30
+Process: P9 Turnaround Time: 47 Waiting Time: 44
+Process: P6 Turnaround Time: 47 Waiting Time: 45
+Process: P10 Turnaround Time: 48 Waiting Time: 42
+Process: P7 Turnaround Time: 48 Waiting Time: 45
+
+AVERAGE TURNAROUND TIME: 28.25
+AVERAGE WAITING TIME: 24.125
+THROUGHPUT: 0.24242424242424243
+
+------RRS Output--------
+Time 1: P1 exec 1/3
+Time 2: P1 exec 2/3
+Time 3: P13 exec 1/3
+Time 4: P13 exec 2/3
+Time 5: P2 exec 1/6
+Time 6: P2 exec 2/6
+Time 7: P14 exec 1/6
+Time 8: P14 exec 2/6
+Time 9: P1 exec 3/3
+Time 10: P3 exec 1/4
+Time 11: P3 exec 2/4
+Time 12: P11 exec 1/4
+Time 13: P11 exec 2/4
+Time 14: P15 exec 1/4
+Time 15: P15 exec 2/4
+Time 16: P13 exec 3/3
+Time 17: P4 exec 1/2
+Time 18: P4 exec 2/2
+Time 19: P12 exec 1/2
+Time 20: P12 exec 2/2
+Time 21: P16 exec 1/2
+Time 22: P16 exec 2/2
+Time 23: P2 exec 3/6
+Time 24: P2 exec 4/6
+Time 25: P8 exec 1/2
+Time 26: P8 exec 2/2
+Time 27: P5 exec 1/14
+Time 28: P5 exec 2/14
+Time 29: P9 exec 1/3
+Time 30: P9 exec 2/3
+Time 31: P14 exec 3/6
+Time 32: P14 exec 4/6
+Time 33: P6 exec 1/2
+Time 34: P6 exec 2/2
+Time 35: P3 exec 3/4
+Time 36: P3 exec 4/4
+Time 37: P11 exec 3/4
+Time 38: P11 exec 4/4
+Time 39: P10 exec 1/6
+Time 40: P10 exec 2/6
+Time 41: P15 exec 3/4
+Time 42: P15 exec 4/4
+Time 43: P7 exec 1/3
+Time 44: P7 exec 2/3
+Time 45: P2 exec 5/6
+Time 46: P2 exec 6/6
+Time 47: P5 exec 3/14
+Time 48: P5 exec 4/14
+Time 49: P9 exec 3/3
+Time 50: P14 exec 5/6
+Time 51: P14 exec 6/6
+Time 52: P10 exec 3/6
+Time 53: P10 exec 4/6
+Time 54: P7 exec 3/3
+Time 55: P5 exec 5/14
+Time 56: P5 exec 6/14
+Time 57: P10 exec 5/6
+Time 58: P10 exec 6/6
+Time 59: P5 exec 7/14
+Time 60: P5 exec 8/14
+Time 61: P5 exec 9/14
+Time 62: P5 exec 10/14
+Time 63: P5 exec 11/14
+Time 64: P5 exec 12/14
+Time 65: P5 exec 13/14
+Time 66: P5 exec 14/14
+Process: P1 Turnaround Time: 9 Waiting Time: 6
+Process: P13 Turnaround Time: 16 Waiting Time: 13
+Process: P4 Turnaround Time: 12 Waiting Time: 10
+Process: P12 Turnaround Time: 14 Waiting Time: 12
+Process: P16 Turnaround Time: 16 Waiting Time: 14
+Process: P8 Turnaround Time: 19 Waiting Time: 17
+Process: P6 Turnaround Time: 24 Waiting Time: 22
+Process: P3 Turnaround Time: 32 Waiting Time: 28
+Process: P11 Turnaround Time: 34 Waiting Time: 30
+Process: P15 Turnaround Time: 38 Waiting Time: 34
+Process: P2 Turnaround Time: 45 Waiting Time: 39
+Process: P9 Turnaround Time: 41 Waiting Time: 38
+Process: P14 Turnaround Time: 50 Waiting Time: 44
+Process: P7 Turnaround Time: 36 Waiting Time: 33
+Process: P10 Turnaround Time: 43 Waiting Time: 37
+Process: P5 Turnaround Time: 58 Waiting Time: 44
+
+AVERAGE TURNAROUND TIME: 30.4375
+AVERAGE WAITING TIME: 26.3125
+THROUGHPUT: 0.24242424242424243
+
+------SRTS Output--------
+Time 0: P1 exec 0/3
+Time 1: P1 exec 1/3
+Time 2: P1 exec 2/3
+Time 3: P1 exec 3/3
+Time 4: P13 exec 1/3
+Time 5: P13 exec 2/3
+Time 6: P13 exec 3/3
+Time 7: P4 exec 1/2
+Time 8: P4 exec 2/2
+Time 9: P12 exec 1/2
+Time 10: P12 exec 2/2
+Time 11: P16 exec 1/2
+Time 12: P16 exec 2/2
+Time 13: P8 exec 1/2
+Time 14: P8 exec 2/2
+Time 15: P6 exec 1/2
+Time 16: P6 exec 2/2
+Time 17: P9 exec 1/3
+Time 18: P9 exec 2/3
+Time 19: P9 exec 3/3
+Time 20: P7 exec 1/3
+Time 21: P7 exec 2/3
+Time 22: P7 exec 3/3
+Time 23: P3 exec 1/4
+Time 24: P3 exec 2/4
+Time 25: P3 exec 3/4
+Time 26: P3 exec 4/4
+Time 27: P11 exec 1/4
+Time 28: P11 exec 2/4
+Time 29: P11 exec 3/4
+Time 30: P11 exec 4/4
+Time 31: P15 exec 1/4
+Time 32: P15 exec 2/4
+Time 33: P15 exec 3/4
+Time 34: P15 exec 4/4
+Time 35: P2 exec 1/6
+Time 36: P2 exec 2/6
+Time 37: P2 exec 3/6
+Time 38: P2 exec 4/6
+Time 39: P2 exec 5/6
+Time 40: P2 exec 6/6
+Time 41: P14 exec 1/6
+Time 42: P14 exec 2/6
+Time 43: P14 exec 3/6
+Time 44: P14 exec 4/6
+Time 45: P14 exec 5/6
+Time 46: P14 exec 6/6
+Time 47: P10 exec 1/6
+Time 48: P10 exec 2/6
+Time 49: P10 exec 3/6
+Time 50: P10 exec 4/6
+Time 51: P10 exec 5/6
+Time 52: P10 exec 6/6
+Time 53: P5 exec 1/14
+Time 54: P5 exec 2/14
+Time 55: P5 exec 3/14
+Time 56: P5 exec 4/14
+Time 57: P5 exec 5/14
+Time 58: P5 exec 6/14
+Time 59: P5 exec 7/14
+Time 60: P5 exec 8/14
+Time 61: P5 exec 9/14
+Time 62: P5 exec 10/14
+Time 63: P5 exec 11/14
+Time 64: P5 exec 12/14
+Time 65: P5 exec 13/14
+Time 66: P5 exec 14/14
+Process: P1 Turnaround Time: 3 Waiting Time: 0
+Process: P13 Turnaround Time: 6 Waiting Time: 3
+Process: P4 Turnaround Time: 2 Waiting Time: 0
+Process: P12 Turnaround Time: 4 Waiting Time: 2
+Process: P16 Turnaround Time: 6 Waiting Time: 4
+Process: P8 Turnaround Time: 7 Waiting Time: 5
+Process: P6 Turnaround Time: 6 Waiting Time: 4
+Process: P9 Turnaround Time: 11 Waiting Time: 8
+Process: P7 Turnaround Time: 4 Waiting Time: 1
+Process: P3 Turnaround Time: 22 Waiting Time: 18
+Process: P11 Turnaround Time: 26 Waiting Time: 22
+Process: P15 Turnaround Time: 30 Waiting Time: 26
+Process: P2 Turnaround Time: 39 Waiting Time: 33
+Process: P14 Turnaround Time: 45 Waiting Time: 39
+Process: P10 Turnaround Time: 37 Waiting Time: 31
+Process: P5 Turnaround Time: 58 Waiting Time: 44
+
+AVERAGE TURNAROUND TIME: 19.125
+AVERAGE WAITING TIME: 15.0
+THROUGHPUT: 0.24242424242424243
