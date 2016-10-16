@@ -29,16 +29,19 @@ class roundRobinScheduler(Scheduler):
         The following checks the arrival queue after each tick to see if any
         processes in the arrival queue have reached their arrival time. If they
         have then they are added to the waiting queue and removed from the
-        arrival queue
+        arrival queue. It has to be a while loop because in some cases there
+        will be multiple processes in the arrival queue with the same arrival
+        time so we want to add all of them.
         '''
-        for i in range(self.arrivalQueue.getLength()):
-            process = self.arrivalQueue.queue[i]
-            if process.getArrivalTime() == self.clock:
-                self.waitingQueue.add(process)
-                remArray.append(i)
-
-        for index in remArray:
-            self.arrivalQueue.remove(index)
+        if (not self.arrivalQueue.isEmpty()):
+            nextProcess = self.arrivalQueue.peek()
+            while (nextProcess.getArrivalTime() == self.clock):
+                p = self.arrivalQueue.serve()
+                self.waitingQueue.add(p)
+                if (not self.arrivalQueue.isEmpty()):
+                    nextProcess = self.arrivalQueue.peek()
+                else:
+                    break
 
         '''
         If the waiting queue is not empty and there is no current process

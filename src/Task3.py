@@ -24,37 +24,39 @@ class shortestRemainingTimeScheduler(Scheduler):
         self.clock += 1
         remArray = []
 
-
         '''
         The following checks the arrival queue after each tick to see if any
         processes in the arrival queue have reached their arrival time. If they
         have then they are added to the waiting queue and removed from the
-        arrival queue.
+        arrival queue. It has to be a while loop because in some cases there
+        will be multiple processes in the arrival queue with the same arrival
+        time so we want to add all of them.
         '''
-        for i in range(self.arrivalQueue.getLength()):
-            process = self.arrivalQueue.queue[i]
-            if process.getArrivalTime() == self.clock:
-                self.waitingQueue.add(process)
-                remArray.append(i)
+        if (not self.arrivalQueue.isEmpty()):
+            nextProcess = self.arrivalQueue.peek()
+            while (nextProcess.getArrivalTime() == self.clock):
+                p = self.arrivalQueue.serve()
+                self.waitingQueue.add(p)
                 self.waitingQueue.remainingTimeSort()
 
-                '''
-                Above we sort the waiting queue based on remaining time after
-                adding any new item to ensure the order is correct,
-                we also then check that if the element with the lowest remaining
-                time (the first one) is lower than the current, then we have
-                to preempt the currently executing process
-                '''
+                if (not self.arrivalQueue.isEmpty()):
+                    nextProcess = self.arrivalQueue.peek()
+                else:
+                    break
 
-                if (self.currentProcess is not None):
-                    if (self.waitingQueue.peek().getRemainingTime() < self.currentProcess.getRemainingTime()):
-                        self.waitingQueue.add(self.currentProcess)
-                        self.currentProcess = self.waitingQueue.serve()
-                        self.waitingQueue.remainingTimeSort()
+        '''
+        Above we sort the waiting queue based on remaining time after
+        adding any new item to ensure the order is correct,
+        we also then check that if the element with the lowest remaining
+        time (the first one) is lower than the current, then we have
+        to preempt the currently executing process
+        '''
 
-        for index in remArray:
-            self.arrivalQueue.remove(index)
-
+        if (self.currentProcess is not None and not self.waitingQueue.isEmpty()):
+            if (self.waitingQueue.peek().getRemainingTime() < self.currentProcess.getRemainingTime()):
+                self.waitingQueue.add(self.currentProcess)
+                self.currentProcess = self.waitingQueue.serve()
+                self.waitingQueue.remainingTimeSort()
 
         '''
         If the waiting queue is not empty and there is no current process
@@ -73,7 +75,6 @@ class shortestRemainingTimeScheduler(Scheduler):
         if self.currentProcess is not None:
             if (self.clock > self.currentProcess.getArrivalTime()):
                 self.currentProcess.incrementTimeSpentExecuting(1)
-
 
             if (self.currentProcess.isFinished()):
                 self.currentProcess.calculateTurnAroundTime(self.clock)

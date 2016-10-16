@@ -28,39 +28,46 @@ def main():
     for process in processArray:
         print(process.stringify())
 
-    print("------FCFSS Output--------")
+    print("\n------FCFSS Output--------")
     FCFSscheduler = firstComeFirstServeScheduler(processArray)
     while (not FCFSscheduler.isFinished()):
         FCFSscheduler.tick()
 
     for process in FCFSscheduler.finishedArray:
-        print(process.stringify())
+        print("Process: " + process.getID()
+        + " Turnaround Time: " + str(process.getTurnAroundTime())
+        + " Waiting Time: " + str(process.getWaitingTime()))
 
-    print("AVERAGE TURNAROUND TIME: " + str(FCFSscheduler.getAvgTurnaroundTime()))
+    print("\nAVERAGE TURNAROUND TIME: " + str(FCFSscheduler.getAvgTurnaroundTime()))
     print("AVERAGE WAITING TIME: " + str(FCFSscheduler.getAvgWaitingTime()))
     print("THROUGHPUT: " + str(FCFSscheduler.getThroughput()))
 
-    print("------RRS Output--------")
+    print("\n------RRS Output--------")
     RRscheduler = roundRobinScheduler(processArray)
     while (not RRscheduler.isFinished()):
         RRscheduler.tick()
 
     for process in RRscheduler.finishedArray:
-        print(process.stringify())
+        print("Process: " + process.getID()
+        + " Turnaround Time: " + str(process.getTurnAroundTime())
+        + " Waiting Time: " + str(process.getWaitingTime()))
 
-    print("AVERAGE TURNAROUND TIME: " + str(RRscheduler.getAvgTurnaroundTime()))
+
+    print("\nAVERAGE TURNAROUND TIME: " + str(RRscheduler.getAvgTurnaroundTime()))
     print("AVERAGE WAITING TIME: " + str(RRscheduler.getAvgWaitingTime()))
     print("THROUGHPUT: " + str(RRscheduler.getThroughput()))
 
-    print("------SRTS Output--------")
+    print("\n------SRTS Output--------")
     SRTscheduler = shortestRemainingTimeScheduler(processArray)
     while (not SRTscheduler.isFinished()):
         SRTscheduler.tick()
 
     for process in SRTscheduler.finishedArray:
-        print(process.stringify())
+        print("Process: " + process.getID()
+        + " Turnaround Time: " + str(process.getTurnAroundTime())
+        + " Waiting Time: " + str(process.getWaitingTime()))
 
-    print("AVERAGE TURNAROUND TIME: " + str(SRTscheduler.getAvgTurnaroundTime()))
+    print("\nAVERAGE TURNAROUND TIME: " + str(SRTscheduler.getAvgTurnaroundTime()))
     print("AVERAGE WAITING TIME: " + str(SRTscheduler.getAvgWaitingTime()))
     print("THROUGHPUT: " + str(SRTscheduler.getThroughput()))
 

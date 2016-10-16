@@ -57,16 +57,6 @@ class Queue:
     def getLength(self):
         return self.qLength
 
-    def remove(self, index):
-        '''
-        To make this unneccesary could just have a loop where you go
-        while (nextElement.getDuration == current clock time)
-            queue.pop --> waitingQueue
-        '''
-
-        del self.queue[index]
-        self.qLength -= 1
-
     def remainingTimeSort(self):
         '''
         In a waiting queue in the shortest remaining time scheduler implementation
