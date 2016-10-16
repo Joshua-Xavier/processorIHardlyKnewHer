@@ -27,7 +27,27 @@ P2 1 6
 P3 4 4
 P4 6 2
 ```
+Using the program requires running `main.py` and feeding it a required
+argument `--input-file="yourPathHere/yourFile.txt"`.
+For instance, to run the program with the example `processes.txt` file we would
+write:
 
+```sh
+python3 main.py --input-file="input/processes.txt"
+```
 
+You should notice you can just edit `input/processes.txt` if you want to make your life a little easier.
+
+Further more to this I suggest running `compileScript.sh` which is a shell
+script that runs the above line by default. If you want to run it simply type:
+
+```sh
+$ ./compileScript.sh  
+```
+ensuring that the correct permissions are enabled for the file to execute.
+Also if you would prefer to direct your output you can use something like
+```sh
+$ ./compileScript.sh > output/your_output_filename.txt
+```
 
 `src`
