@@ -61,7 +61,10 @@ class Queue:
         '''
         In a waiting queue in the shortest remaining time scheduler implementation
         it became necessary to have a queue that is a priority queue, based on
-        lowest remaining time. Calling this sort function will sort the queue
+        lowest remaining time. We also have the condition that in the event of multiple
+        processes have the same remaining time, the one that has been waiting the longest
+        is the tie-breaker, so you see the lamda account for that with the getArrivalTime
+        statement. Calling this sort function will sort the queue
         to ensure the element to be served next is the one with the shortest
         time remaining.
         '''

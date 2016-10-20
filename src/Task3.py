@@ -2,7 +2,7 @@
 AUTHOR: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 11/10/16
-LAST MODIFIED: 15/10/16
+LAST MODIFIED: 20/10/16
 DESCRIPTION: This scheduler inherits from the original Scheduler class and extends
 it with a unique tick function. It's tick function replicates the scheduling of
 processes via a Shortest Remaining Time Scheduling method.
@@ -14,7 +14,7 @@ import copy
 
 class shortestRemainingTimeScheduler(Scheduler):
 
-    def tick(self):
+    def tick(self, detailed_output):
         '''
         In shortest remaining time scheduling the process with the shortest
         remaining time should always be running, so if a process is running and
@@ -23,7 +23,7 @@ class shortestRemainingTimeScheduler(Scheduler):
         '''
 
         '''
-        The following checks the arrival queue after each tick to see if any
+        The following checks the arrival queue before each tick to see if any
         processes in the arrival queue have reached their arrival time. If they
         have then they are added to the waiting queue and removed from the
         arrival queue. It has to be a while loop because in some cases there
@@ -75,14 +75,17 @@ class shortestRemainingTimeScheduler(Scheduler):
         if self.currentProcess is not None:
             if (self.clock >= self.currentProcess.getArrivalTime() and self.clock > 0):
                 self.currentProcess.incrementTimeSpentExecuting(1)
-                print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
+                if detailed_output:
+                    print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
+
 
             while (self.currentProcess.isFinished()):
                 self.currentProcess.calculateTurnAroundTime(self.clock)
                 self.currentProcess.calculateWaitingTime(self.clock)
                 self.finishedArray.append(self.currentProcess)
                 if (self.waitingQueue.isEmpty()):
-                    self.currentProcess = None
+                    self.currentProcess = None #no more processes right now
                     break
                 else:
                     self.currentProcess = self.waitingQueue.serve()
+                    # next process is lined up

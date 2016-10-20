@@ -14,7 +14,6 @@ from src.fileRead import getData
 from src.Task1 import firstComeFirstServeScheduler
 from src.Task2 import roundRobinScheduler
 from src.Task3 import shortestRemainingTimeScheduler
-from src.testing import test
 
 def main():
     '''we define the cmd line arg here to select file for input'''
@@ -30,11 +29,11 @@ def main():
         for process in processArray:
             print(process.stringify())
 
-    def fcfsDescription():
+    def fcfsDescription(detailed_output):
         print("\n------FCFSS Output--------")
         FCFSscheduler = firstComeFirstServeScheduler(processArray)
         while (not FCFSscheduler.isFinished()):
-            FCFSscheduler.tick()
+            FCFSscheduler.tick(detailed_output)
 
         for process in FCFSscheduler.finishedArray:
             print("Process: " + process.getID()
@@ -45,11 +44,11 @@ def main():
         print("AVERAGE WAITING TIME: " + str(FCFSscheduler.getAvgWaitingTime()))
         print("THROUGHPUT: " + str(FCFSscheduler.getThroughput()))
 
-    def rrDescription():
+    def rrDescription(detailed_output):
         print("\n------RRS Output--------")
         RRscheduler = roundRobinScheduler(processArray)
         while (not RRscheduler.isFinished()):
-            RRscheduler.tick()
+            RRscheduler.tick(detailed_output)
 
         for process in RRscheduler.finishedArray:
             print("Process: " + process.getID()
@@ -61,11 +60,11 @@ def main():
         print("AVERAGE WAITING TIME: " + str(RRscheduler.getAvgWaitingTime()))
         print("THROUGHPUT: " + str(RRscheduler.getThroughput()))
 
-    def srtDescription():
+    def srtDescription(detailed_output):
         print("\n------SRTS Output--------")
         SRTscheduler = shortestRemainingTimeScheduler(processArray)
         while (not SRTscheduler.isFinished()):
-            SRTscheduler.tick()
+            SRTscheduler.tick(detailed_output)
 
         for process in SRTscheduler.finishedArray:
             print("Process: " + process.getID()
@@ -85,24 +84,30 @@ def main():
     while (not valid_cmd):
         valid_cmd = True
         cmd = input("Please enter what type of scheduling you want to run: ")
+        detailed_output = False
+        d_o = input("Would you like to print out process traces? (y/n): ")
+        # defaults to no if user does not enter y
+        if(d_o == "y" or d_o == "Y"):
+            detailed_output = True
 
         if(cmd == "0"):
+
             inputDescription()
-            fcfsDescription()
-            rrDescription()
-            srtDescription()
+            fcfsDescription(detailed_output)
+            rrDescription(detailed_output)
+            srtDescription(detailed_output)
 
         elif(cmd == "1"):
             inputDescription()
-            fcfsDescription()
+            fcfsDescription(detailed_output)
 
         elif(cmd == "2"):
             inputDescription()
-            rrDescription()
+            rrDescription(detailed_output)
 
         elif(cmd == "3"):
             inputDescription()
-            srtDescription()
+            srtDescription(detailed_output)
 
         else:
             print("Invalid cmd entered, please choose from menu. 0, 1, 2 or 3\n")

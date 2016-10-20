@@ -14,7 +14,7 @@ import copy
 
 class firstComeFirstServeScheduler(Scheduler):
 
-    def tick(self):
+    def tick(self, detailed_output):
         '''
         In first come first serve scheduling, the processes are served based
         on arrival time and complete completely before moving on to the next one.
@@ -22,14 +22,15 @@ class firstComeFirstServeScheduler(Scheduler):
         if self.currentProcess is not None:
             if (self.clock > self.currentProcess.getArrivalTime()):
                 self.currentProcess.incrementTimeSpentExecuting(1)
-                print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
+                if detailed_output:
+                    print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
 
             if (self.currentProcess.isFinished()):
                 self.currentProcess.calculateTurnAroundTime(self.clock)
                 self.currentProcess.calculateWaitingTime(self.clock)
                 self.finishedArray.append(self.currentProcess)
                 self.currentProcess = None
-                
+
         self.clock += 1
 
         '''

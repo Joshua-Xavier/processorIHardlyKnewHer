@@ -14,7 +14,7 @@ import copy
 
 class roundRobinScheduler(Scheduler):
 
-    def tick(self):
+    def tick(self, detailed_output):
         '''
         In round robin scheduling, the processes are served for a given time
         slice then cycled around. The time slice in this case is 2. The order of
@@ -47,7 +47,7 @@ class roundRobinScheduler(Scheduler):
         executing, then the current process should be grabbed from the waiting
         queue
         '''
-        if not self.waitingQueue.isEmpty(): #this is issue
+        if not self.waitingQueue.isEmpty():
             if (self.currentProcess is None):
                 self.currentProcess = self.waitingQueue.serve()
 
@@ -62,7 +62,10 @@ class roundRobinScheduler(Scheduler):
             if (self.clock > self.currentProcess.getArrivalTime()):
                 self.currentProcess.incrementTimeSpentExecuting(1)
                 self.count += 1
-                print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
+
+                if detailed_output:
+                    print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
+                    
             if (self.currentProcess.isFinished()):
                 self.currentProcess.calculateTurnAroundTime(self.clock)
                 self.currentProcess.calculateWaitingTime(self.clock)
