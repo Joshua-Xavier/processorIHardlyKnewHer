@@ -19,8 +19,18 @@ class firstComeFirstServeScheduler(Scheduler):
         In first come first serve scheduling, the processes are served based
         on arrival time and complete completely before moving on to the next one.
         '''
+        if self.currentProcess is not None:
+            if (self.clock > self.currentProcess.getArrivalTime()):
+                self.currentProcess.incrementTimeSpentExecuting(1)
+                print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
+
+            if (self.currentProcess.isFinished()):
+                self.currentProcess.calculateTurnAroundTime(self.clock)
+                self.currentProcess.calculateWaitingTime(self.clock)
+                self.finishedArray.append(self.currentProcess)
+                self.currentProcess = None
+                
         self.clock += 1
-        remArray = []
 
         '''
         The following checks the arrival queue after each tick to see if any
@@ -54,13 +64,3 @@ class firstComeFirstServeScheduler(Scheduler):
         and if the process happens to be finished then calculate turnaround time,
         waiting time and add the process to the finished array.
         '''
-        if self.currentProcess is not None:
-            if (self.clock > self.currentProcess.getArrivalTime()):
-                self.currentProcess.incrementTimeSpentExecuting(1)
-                print("Time " + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
-
-            if (self.currentProcess.isFinished()):
-                self.currentProcess.calculateTurnAroundTime(self.clock)
-                self.currentProcess.calculateWaitingTime(self.clock)
-                self.finishedArray.append(self.currentProcess)
-                self.currentProcess = None

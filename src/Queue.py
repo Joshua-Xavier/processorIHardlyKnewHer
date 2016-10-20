@@ -66,4 +66,4 @@ class Queue:
         time remaining.
         '''
         #sorts queue by remaining time using a lambda function
-        self.queue.sort(key=lambda x:x.getRemainingTime())
+        self.queue.sort(key=lambda x: (x.getRemainingTime(), x.getArrivalTime()))

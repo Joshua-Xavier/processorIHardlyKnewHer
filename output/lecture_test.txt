@@ -1,0 +1,99 @@
+------Original Input--------
+['A', 0, 3, -1, -1, 0]
+['B', 2, 6, -1, -1, 0]
+['C', 4, 4, -1, -1, 0]
+['D', 6, 5, -1, -1, 0]
+['E', 8, 2, -1, -1, 0]
+
+------FCFSS Output--------
+Time 0-1: A exec 1/3
+Time 1-2: A exec 2/3
+Time 2-3: A exec 3/3
+Time 3-4: B exec 1/6
+Time 4-5: B exec 2/6
+Time 5-6: B exec 3/6
+Time 6-7: B exec 4/6
+Time 7-8: B exec 5/6
+Time 8-9: B exec 6/6
+Time 9-10: C exec 1/4
+Time 10-11: C exec 2/4
+Time 11-12: C exec 3/4
+Time 12-13: C exec 4/4
+Time 13-14: D exec 1/5
+Time 14-15: D exec 2/5
+Time 15-16: D exec 3/5
+Time 16-17: D exec 4/5
+Time 17-18: D exec 5/5
+Time 18-19: E exec 1/2
+Time 19-20: E exec 2/2
+Process: A Turnaround Time: 3 Waiting Time: 0
+Process: B Turnaround Time: 7 Waiting Time: 1
+Process: C Turnaround Time: 9 Waiting Time: 5
+Process: D Turnaround Time: 12 Waiting Time: 7
+Process: E Turnaround Time: 12 Waiting Time: 10
+
+AVERAGE TURNAROUND TIME: 8.6
+AVERAGE WAITING TIME: 4.6
+THROUGHPUT: 0.23809523809523808
+
+------RRS Output--------
+Time 0-1: A exec 1/3
+Time 1-2: A exec 2/3
+Time 2-3: B exec 1/6
+Time 3-4: B exec 2/6
+Time 4-5: A exec 3/3
+Time 5-6: C exec 1/4
+Time 6-7: C exec 2/4
+Time 7-8: B exec 3/6
+Time 8-9: B exec 4/6
+Time 9-10: D exec 1/5
+Time 10-11: D exec 2/5
+Time 11-12: C exec 3/4
+Time 12-13: C exec 4/4
+Time 13-14: E exec 1/2
+Time 14-15: E exec 2/2
+Time 15-16: B exec 5/6
+Time 16-17: B exec 6/6
+Time 17-18: D exec 3/5
+Time 18-19: D exec 4/5
+Time 19-20: D exec 5/5
+Process: A Turnaround Time: 5 Waiting Time: 2
+Process: C Turnaround Time: 9 Waiting Time: 5
+Process: E Turnaround Time: 7 Waiting Time: 5
+Process: B Turnaround Time: 15 Waiting Time: 9
+Process: D Turnaround Time: 14 Waiting Time: 9
+
+AVERAGE TURNAROUND TIME: 10.0
+AVERAGE WAITING TIME: 6.0
+THROUGHPUT: 0.25
+
+------SRTS Output--------
+Time 0-1: A exec 1/3
+Time 1-2: A exec 2/3
+Time 2-3: A exec 3/3
+Time 3-4: B exec 1/6
+Time 4-5: C exec 1/4
+Time 5-6: C exec 2/4
+Time 6-7: C exec 3/4
+Time 7-8: C exec 4/4
+Time 8-9: E exec 1/2
+Time 9-10: E exec 2/2
+Time 10-11: B exec 2/6
+Time 11-12: B exec 3/6
+Time 12-13: B exec 4/6
+Time 13-14: B exec 5/6
+Time 14-15: B exec 6/6
+Time 15-16: D exec 1/5
+Time 16-17: D exec 2/5
+Time 17-18: D exec 3/5
+Time 18-19: D exec 4/5
+Time 19-20: D exec 5/5
+Process: A Turnaround Time: 3 Waiting Time: 0
+Process: C Turnaround Time: 4 Waiting Time: 0
+Process: E Turnaround Time: 2 Waiting Time: 0
+Process: B Turnaround Time: 13 Waiting Time: 7
+Process: D Turnaround Time: 14 Waiting Time: 9
+
+AVERAGE TURNAROUND TIME: 7.2
+AVERAGE WAITING TIME: 3.2
+THROUGHPUT: 0.25

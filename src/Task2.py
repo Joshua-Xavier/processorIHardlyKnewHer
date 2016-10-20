@@ -23,7 +23,6 @@ class roundRobinScheduler(Scheduler):
         the end of the queue
         '''
         self.clock += 1
-        remArray = []
 
         '''
         The following checks the arrival queue after each tick to see if any
@@ -63,7 +62,7 @@ class roundRobinScheduler(Scheduler):
             if (self.clock > self.currentProcess.getArrivalTime()):
                 self.currentProcess.incrementTimeSpentExecuting(1)
                 self.count += 1
-                print("Time " + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
+                print("Time " + str(self.clock - 1) + "-" + str(self.clock) + ": " + self.currentProcess.getID() + " exec " + str(self.currentProcess.getTimeSpentExecuting()) + "/" + str(self.currentProcess.getDuration()))
             if (self.currentProcess.isFinished()):
                 self.currentProcess.calculateTurnAroundTime(self.clock)
                 self.currentProcess.calculateWaitingTime(self.clock)
