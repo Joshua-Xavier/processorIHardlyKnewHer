@@ -17,59 +17,97 @@ from src.Task3 import shortestRemainingTimeScheduler
 from src.testing import test
 
 def main():
+    '''we define the cmd line arg here to select file for input'''
     parser = argparse.ArgumentParser(description="Evaluate the performance of differnt scheduling algorithms")
     parser.add_argument('--input-file', dest='input_file', required=True)
     args = parser.parse_args()
 
     processArray = getData(args.input_file)
 
+    '''We define the various scheduling run functions here for the simulation'''
+    def inputDescription():
+        print("------Original Input--------")
+        for process in processArray:
+            print(process.stringify())
 
-    print("------Original Input--------")
-    for process in processArray:
-        print(process.stringify())
+    def fcfsDescription():
+        print("\n------FCFSS Output--------")
+        FCFSscheduler = firstComeFirstServeScheduler(processArray)
+        while (not FCFSscheduler.isFinished()):
+            FCFSscheduler.tick()
 
-    print("\n------FCFSS Output--------")
-    FCFSscheduler = firstComeFirstServeScheduler(processArray)
-    while (not FCFSscheduler.isFinished()):
-        FCFSscheduler.tick()
+        for process in FCFSscheduler.finishedArray:
+            print("Process: " + process.getID()
+            + " Turnaround Time: " + str(process.getTurnAroundTime())
+            + " Waiting Time: " + str(process.getWaitingTime()))
 
-    for process in FCFSscheduler.finishedArray:
-        print("Process: " + process.getID()
-        + " Turnaround Time: " + str(process.getTurnAroundTime())
-        + " Waiting Time: " + str(process.getWaitingTime()))
+        print("\nAVERAGE TURNAROUND TIME: " + str(FCFSscheduler.getAvgTurnaroundTime()))
+        print("AVERAGE WAITING TIME: " + str(FCFSscheduler.getAvgWaitingTime()))
+        print("THROUGHPUT: " + str(FCFSscheduler.getThroughput()))
 
-    print("\nAVERAGE TURNAROUND TIME: " + str(FCFSscheduler.getAvgTurnaroundTime()))
-    print("AVERAGE WAITING TIME: " + str(FCFSscheduler.getAvgWaitingTime()))
-    print("THROUGHPUT: " + str(FCFSscheduler.getThroughput()))
+    def rrDescription():
+        print("\n------RRS Output--------")
+        RRscheduler = roundRobinScheduler(processArray)
+        while (not RRscheduler.isFinished()):
+            RRscheduler.tick()
 
-    print("\n------RRS Output--------")
-    RRscheduler = roundRobinScheduler(processArray)
-    while (not RRscheduler.isFinished()):
-        RRscheduler.tick()
-
-    for process in RRscheduler.finishedArray:
-        print("Process: " + process.getID()
-        + " Turnaround Time: " + str(process.getTurnAroundTime())
-        + " Waiting Time: " + str(process.getWaitingTime()))
+        for process in RRscheduler.finishedArray:
+            print("Process: " + process.getID()
+            + " Turnaround Time: " + str(process.getTurnAroundTime())
+            + " Waiting Time: " + str(process.getWaitingTime()))
 
 
-    print("\nAVERAGE TURNAROUND TIME: " + str(RRscheduler.getAvgTurnaroundTime()))
-    print("AVERAGE WAITING TIME: " + str(RRscheduler.getAvgWaitingTime()))
-    print("THROUGHPUT: " + str(RRscheduler.getThroughput()))
+        print("\nAVERAGE TURNAROUND TIME: " + str(RRscheduler.getAvgTurnaroundTime()))
+        print("AVERAGE WAITING TIME: " + str(RRscheduler.getAvgWaitingTime()))
+        print("THROUGHPUT: " + str(RRscheduler.getThroughput()))
 
-    print("\n------SRTS Output--------")
-    SRTscheduler = shortestRemainingTimeScheduler(processArray)
-    while (not SRTscheduler.isFinished()):
-        SRTscheduler.tick()
+    def srtDescription():
+        print("\n------SRTS Output--------")
+        SRTscheduler = shortestRemainingTimeScheduler(processArray)
+        while (not SRTscheduler.isFinished()):
+            SRTscheduler.tick()
 
-    for process in SRTscheduler.finishedArray:
-        print("Process: " + process.getID()
-        + " Turnaround Time: " + str(process.getTurnAroundTime())
-        + " Waiting Time: " + str(process.getWaitingTime()))
+        for process in SRTscheduler.finishedArray:
+            print("Process: " + process.getID()
+            + " Turnaround Time: " + str(process.getTurnAroundTime())
+            + " Waiting Time: " + str(process.getWaitingTime()))
 
-    print("\nAVERAGE TURNAROUND TIME: " + str(SRTscheduler.getAvgTurnaroundTime()))
-    print("AVERAGE WAITING TIME: " + str(SRTscheduler.getAvgWaitingTime()))
-    print("THROUGHPUT: " + str(SRTscheduler.getThroughput()))
+        print("\nAVERAGE TURNAROUND TIME: " + str(SRTscheduler.getAvgTurnaroundTime()))
+        print("AVERAGE WAITING TIME: " + str(SRTscheduler.getAvgWaitingTime()))
+        print("THROUGHPUT: " + str(SRTscheduler.getThroughput()))
+
+
+    '''Below here we have the main program menu that lets you select which
+    scheduling algorithm you want to run'''
+
+    print("0. Run all 3 scheduling algorithms\n1. First come first serve\n2. Round robin scheduling\n3.Shortest time remaining")
+    valid_cmd = False
+    while (not valid_cmd):
+        valid_cmd = True
+        cmd = input("Please enter what type of scheduling you want to run: ")
+
+        if(cmd == "0"):
+            inputDescription()
+            fcfsDescription()
+            rrDescription()
+            srtDescription()
+
+        elif(cmd == "1"):
+            inputDescription()
+            fcfsDescription()
+
+        elif(cmd == "2"):
+            inputDescription()
+            rrDescription()
+
+        elif(cmd == "3"):
+            inputDescription()
+            srtDescription()
+
+        else:
+            print("Invalid cmd entered, please choose from menu. 0, 1, 2 or 3\n")
+            valid_cmd = False
+
 
 
 

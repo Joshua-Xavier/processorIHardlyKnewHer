@@ -23,11 +23,12 @@ class shortestRemainingTimeScheduler(Scheduler):
         '''
 
         '''
-        Above we sort the waiting queue based on remaining time after
-        adding any new item to ensure the order is correct,
-        we also then check that if the element with the lowest remaining
-        time (the first one) is lower than the current, then we have
-        to preempt the currently executing process
+        The following checks the arrival queue after each tick to see if any
+        processes in the arrival queue have reached their arrival time. If they
+        have then they are added to the waiting queue and removed from the
+        arrival queue. It has to be a while loop because in some cases there
+        will be multiple processes in the arrival queue with the same arrival
+        time so we want to add all of them.
         '''
         if (not self.arrivalQueue.isEmpty()):
             nextProcess = self.arrivalQueue.peek()
@@ -45,12 +46,11 @@ class shortestRemainingTimeScheduler(Scheduler):
 
 
         '''
-        The following checks the arrival queue after each tick to see if any
-        processes in the arrival queue have reached their arrival time. If they
-        have then they are added to the waiting queue and removed from the
-        arrival queue. It has to be a while loop because in some cases there
-        will be multiple processes in the arrival queue with the same arrival
-        time so we want to add all of them.
+        Below we sort the waiting queue based on remaining time after
+        adding any new item to ensure the order is correct,
+        we also then check that if the element with the lowest remaining
+        time (the first one) is lower than the current, then we have
+        to preempt the currently executing process
         '''
         if (self.currentProcess is not None and not self.waitingQueue.isEmpty()):
             if (self.waitingQueue.peek().getRemainingTime() < self.currentProcess.getRemainingTime()):
