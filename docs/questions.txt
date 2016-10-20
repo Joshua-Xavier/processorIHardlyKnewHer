@@ -1,8 +1,0 @@
-# check whether code output is correct
-
-# check how many things we should check in our draft 4 report
-
-# can we have them all print out at same time or need to split so user 
-does different commands
-
-# 
